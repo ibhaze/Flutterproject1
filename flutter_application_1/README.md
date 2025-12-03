@@ -1,16 +1,34 @@
 # flutter_application_1
 
-A new Flutter project.
+## 🧠 How It Works
 
-## Getting Started
+The home_page.dart uses a StatefulWidget to manage the counter value.
 
-This project is a starting point for a Flutter application.
+setState() updates the UI whenever:
 
-A few resources to get you started if this is your first Flutter project:
+- Increment button is pressed
+- Decrement button is pressed
+- Reset button is pressed 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+ 
+## 👀 Visuals 
+UI is rebuilt automatically using Flutter’s reactive architecture.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+![alt text](image-1.png)
+
+## 🧠 Basic logic example:
+int count = 0;
+
+void increment() => setState(() => count++);
+void decrement() => setState(() => count--);
+void reset()     => setState(() => count = 0);
+
+
+
+## 📦 Technologies Used
+
+- Flutter SDK
+- Dart
+- Material Design widgets

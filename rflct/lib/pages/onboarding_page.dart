@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rflct/pages/home_page.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -60,7 +61,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     }
   }
 
-  // Single onboarding page layout
+  //  onboarding pages layout
   Widget _buildPage({
     required String title,
     required String description,
@@ -73,17 +74,19 @@ class _OnboardingPageState extends State<OnboardingPage> {
         children: [
           Text(
             title,
-            style: const TextStyle(
-              fontSize: 32,
+            style: GoogleFonts.nunitoSans(
+              fontSize: 45,
               fontWeight: FontWeight.bold,
+              color:Colors.white
             ),
           ),
           const SizedBox(height: 16),
           Text(
             description,
-            style: const TextStyle(
+            style:  GoogleFonts.nunitoSans(
               fontSize: 18,
               height: 1.4,
+              color:Colors.white
             ),
           ),
         ],
@@ -104,7 +107,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           width: isActive ? 16 : 8,
           height: 8,
           decoration: BoxDecoration(
-            color: isActive ? Colors.black : Colors.grey.shade400,
+               color: isActive ? const Color(0xFF663366) : Colors.white,
             borderRadius: BorderRadius.circular(4),
           ),
         );
@@ -115,7 +118,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFCABDE6),
+      backgroundColor: Color(0xFF663366),
       body: SafeArea(
         child: Column(
           children: [
@@ -140,7 +143,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   _buildPage(
                     title: 'Capture Your Thoughts',
                     description:
-                        'Write, track, and organise your reflections in one place.',
+                        'Record, track, and organise your reflections in one place.',
                   ),
                   _buildPage(
                     title: 'Grow with Intention',

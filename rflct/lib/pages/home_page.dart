@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home", style: GoogleFonts.nunito()),
-        backgroundColor: const Color(0xFFCABDE6),
+        backgroundColor: const Color(0xFF663366),
       ),
       body: Center(
         child: Text(

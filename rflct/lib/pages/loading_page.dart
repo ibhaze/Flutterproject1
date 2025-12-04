@@ -61,7 +61,7 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFCABDE6),
+      backgroundColor: const Color(0xFF663366),
 
       body: Center(
         child: TweenAnimationBuilder(
@@ -91,6 +91,7 @@ class _LoadingPageState extends State<LoadingPage> {
             style: GoogleFonts.nunito(
               fontSize: 70,
               fontWeight: FontWeight.w600,
+              color: Colors.white,
             ),
           ),
         ),

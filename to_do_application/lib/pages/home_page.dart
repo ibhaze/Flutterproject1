@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
           taskCompleted: false,
           onChanged: (p0){
 
-          },
+          }, 
          ),
 
         ],

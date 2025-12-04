@@ -1,38 +1,36 @@
 # REFLECT — Audio Journaling App
 
 ## Overview
-**REFLECT** is a Flutter-based mobile app designed for **audio journaling and reflection**.  
+
+**REFLECT (RFLCT)** is a Flutter-based mobile app designed for **audio journaling and reflection**.  
 The app guides users into a calm, reflective experience with a simple and minimal UI.
 
 Currently, the app includes:
-
-- **Loading/Intro Animation**: A 2-second fade + scale animation on the "RFLCT" logo with a soft purple background.
-- **Smooth Transition**: After 3–4 seconds, the app transitions to the Home Page using a **slide-up + fade animation**.
-- **Home Page Placeholder**: Basic Home Page ready for adding audio journaling features.
+- **Landing  Page** 
+![Landing Page](../rflct/assets/images/image.png)
+- **Onboarding Page** with 3 pages:
+  - *Welcome to RFLCT* — introduces the app.
+![alt text](../rflct/assets/images/image2.png)
+  - *Capture Your Thoughts* — explains recording, tracking, and organising reflections.
+![alt text](../rflct/assets/images/image3.png)
+  - *Grow with Intention* — encourages small daily changes over time.
+![alt text](../rflct/assets/images/image4.png)
+- **Top Progress Indicator Bar**:
+  - A linear progress bar at the top showing how far the user is in the onboarding flow.
+- **Skip & Next Controls**:
+  - **Skip** text on the left to jump directly to the last onboarding page.
+  - **Next** button on the right to move to the next page or proceed into the app.
+- **Home Page Placeholder**:
+  - A basic Home Page ready for adding audio journaling features (recording, playback, etc.).
+  ![alt text](../rflct/assets/images/image5.png)
 
 ---
-
-## Project Structure
-rflct/lib/main.dart # Entry point of the app /pages/loading_page.dart , home_page.dart 
-
-
----
-
-## Screens & Flow
-
-1. **Loading Page**
-   - Purple background (`#CABDE6`)  
-   - "RFLCT" logo appears with a **fade + scale animation**  
-   - Duration: 2 seconds animation + 3-second wait  
-   - Automatically transitions to Home Page
-   ![alt text](image.png)
-
-2. **Home Page**
-   - Simple welcome message  
-   - Scaffold ready for app content  
-   - Target page after the intro animation  
 
  
+ 
+## Project Structure
+rflct/lib/main.dart # Entry point of the app /pages/loading_page.dart, onboarding_page.dart  , home_page.dart 
+
 
 
 
@@ -44,7 +42,7 @@ rflct/lib/main.dart # Entry point of the app /pages/loading_page.dart , home_pag
 - **Timer**: Controls the 3–4 second wait before transitioning
 - **PageRouteBuilder**: Custom slide-up + fade transition
 - **Google Fonts**: Nunito font used throughout
-- **Hex Color Theme**: Background set to `#CABDE6`
+
 
 ---
 

@@ -9,14 +9,24 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home", style: GoogleFonts.nunito()),
-        backgroundColor: const Color(0xFF663366),
       ),
       body: Center(
         child: Text(
           "Welcome to RFLCT",
           style: GoogleFonts.nunito(fontSize: 24),
         ),
-        
+      
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor:   const Color(0xFF663366),
+          selectedItemColor: Color.fromARGB(255, 158, 108, 158),    
+  unselectedItemColor: Colors.white,
+          items: const [
+       
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+        ],
       ),
     );
   }

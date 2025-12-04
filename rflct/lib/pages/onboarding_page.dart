@@ -33,15 +33,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
           transitionDuration: const Duration(milliseconds: 900),
           pageBuilder: (_, __, ___) => const HomePage(),
           transitionsBuilder: (_, animation, __, child) {
-            final slideAnimation = Tween<Offset>(
-              begin: const Offset(0, 0.15),
-              end: Offset.zero,
-            ).animate(
-              CurvedAnimation(
-                parent: animation,
-                curve: Curves.easeOut,
-              ),
-            );
+            final slideAnimation =
+                Tween<Offset>(
+                  begin: const Offset(0, 0.15),
+                  end: Offset.zero,
+                ).animate(
+                  CurvedAnimation(parent: animation, curve: Curves.easeOut),
+                );
 
             final fadeAnimation = Tween<double>(
               begin: 0.0,
@@ -50,10 +48,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
             return FadeTransition(
               opacity: fadeAnimation,
-              child: SlideTransition(
-                position: slideAnimation,
-                child: child,
-              ),
+              child: SlideTransition(position: slideAnimation, child: child),
             );
           },
         ),
@@ -62,10 +57,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   //  onboarding pages layout
-  Widget _buildPage({
-    required String title,
-    required String description,
-  }) {
+  Widget _buildPage({required String title, required String description}) {
     return Padding(
       padding: const EdgeInsets.all(24.0),
       child: Column(
@@ -77,16 +69,16 @@ class _OnboardingPageState extends State<OnboardingPage> {
             style: GoogleFonts.nunitoSans(
               fontSize: 45,
               fontWeight: FontWeight.bold,
-              color:Colors.white
+              color: Colors.white,
             ),
           ),
           const SizedBox(height: 16),
           Text(
             description,
-            style:  GoogleFonts.nunitoSans(
+            style: GoogleFonts.nunitoSans(
               fontSize: 18,
               height: 1.4,
-              color:Colors.white
+              color: Colors.white,
             ),
           ),
         ],
@@ -95,89 +87,111 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   // Pagination dots
-  Widget _buildDots() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(3, (index) {
-        final bool isActive = _currentPage == index;
-
-        return AnimatedContainer(
-          duration: const Duration(milliseconds: 250),
-          margin: const EdgeInsets.symmetric(horizontal: 4.0),
-          width: isActive ? 16 : 8,
-          height: 8,
-          decoration: BoxDecoration(
-               color: isActive ? const Color(0xFF663366) : Colors.white,
-            borderRadius: BorderRadius.circular(4),
-          ),
-        );
-      }),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF663366),
+      backgroundColor: const Color(0xFF663366),
       body: SafeArea(
-        child: Column(
+        child: Stack(
           children: [
-            // Top: pages
-            Expanded(
-              child: PageView(
-                controller: _pageController,
-                onPageChanged: (index) {
-                  setState(() {
-                    _currentPage = index;
-                  });
-                
-                },
-                children: [
+            // Main content: pages + bottom controls
+            Column(
+              children: [
+                // Gives a bit of space at the top so the bar isn't glued to the edge
+                const SizedBox(height: 24),
 
-                  _buildPage(
-                    title: 'Welcome to RFLCT',
-                    description:
-                        'A calm space to slow down, process your day, and reflect.',
-                    
+                // Pages
+                Expanded(
+                  child: PageView(
+                    controller: _pageController,
+                    onPageChanged: (index) {
+                      setState(() {
+                        _currentPage = index;
+                      });
+                    },
+                    children: [
+                      _buildPage(
+                        title: 'Welcome to RFLCT',
+                        description:
+                            'A calm space to slow down, process your day, and reflect.',
+                      ),
+                      _buildPage(
+                        title: 'Capture Your Thoughts',
+                        description:
+                            'Record, track, and organise your reflections in one place.',
+                      ),
+                      _buildPage(
+                        title: 'Grow with Intention',
+                        description:
+                            'Turn your reflections into small daily changes over time.',
+                      ),
+                    ],
                   ),
-                  _buildPage(
-                    title: 'Capture Your Thoughts',
-                    description:
-                        'Record, track, and organise your reflections in one place.',
+                ),
+
+                // Bottom: Skip + Next
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 16,
                   ),
-                  _buildPage(
-                    title: 'Grow with Intention',
-                    description:
-                        'Turn your reflections into small daily changes over time.',
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // SKIP text button  
+                      GestureDetector(
+                        onTap: () {
+                          // Jump to last page
+                          _pageController.animateToPage(
+                            2, // last page index (0,1,2)
+                            duration: const Duration(milliseconds: 400),
+                            curve: Curves.easeInOut,
+                          );
+                        },
+                        child: const Text(
+                          "Skip >",
+                          style: TextStyle(
+                             
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+
+                      // NEXT button
+                      ElevatedButton(
+                        onPressed: _goToNextPageOrHome,
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 24,
+                            vertical: 12,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        child: Text(
+                          _currentPage == 2 ? 'Get started' : 'Next',
+                        
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
 
-            // Bottom: dots + Next button
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _buildDots(),
-                  ElevatedButton(
-                    onPressed: _goToNextPageOrHome,
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 12,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    child: Text(
-                      _currentPage == 2 ? 'Next' : 'Next',
-                      // if you want → _currentPage == 2 ? 'Get started' : 'Next'
-                    ),
-                  ),
-                ],
+            // Top progress indicator bar
+            Positioned(
+              top: 8,
+              left: 0,
+              right: 0,
+              child: LinearProgressIndicator(
+                value: (_currentPage + 1) / 3, // because i have 3 pages
+                backgroundColor: Colors.white.withOpacity(0.2),
+                color: Colors.white,
+                minHeight: 4,
               ),
             ),
           ],

@@ -13,12 +13,7 @@ Currently, the app includes:
 ---
 
 ## Project Structure
-rflct/
-├── lib/
-│ ├── main.dart # Entry point of the app
-│ └── pages/
-│ ├── loading_page.dart # Animated intro / splash page
-│ └── home_page.dart # Placeholder Home Page
+rflct/lib/main.dart # Entry point of the app /pages/loading_page.dart , home_page.dart 
 
 
 ---

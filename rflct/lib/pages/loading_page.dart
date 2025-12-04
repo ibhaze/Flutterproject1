@@ -1,7 +1,9 @@
+// ignore_for_file: unnecessary_underscores
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:rflct/pages/home_page.dart';
+import 'package:rflct/pages/onboarding_page.dart';
 
 class LoadingPage extends StatefulWidget {
   const LoadingPage({super.key});
@@ -21,19 +23,23 @@ class _LoadingPageState extends State<LoadingPage> {
         PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 900),
 
-          // The page to navigate to
-          pageBuilder: (_, __, ___) => const HomePage(),
+          pageBuilder: (_, __, ___) =>
+              const OnboardingPage(), // The page to navigate to
 
-          // Defines how the transition animation looks
           transitionsBuilder: (_, animation, __, child) {
-            // Slide animation: page moves from slightly below the screen → normal position
-            final slideAnimation = Tween<Offset>(
-              begin: const Offset(0, 0.15), // Start slightly lower
-              end: Offset.zero,             // End at normal position
-            ).animate(CurvedAnimation(
-              parent: animation,
-              curve: Curves.easeOut,        // Smooth, natural movement
-            ));
+            // Defines how the transition animation looks
+
+            final slideAnimation =
+                Tween<Offset>(
+                  // Slide animation: page moves from slightly below the screen → normal position
+                  begin: const Offset(0, 0.15), // Start slightly lower
+                  end: Offset.zero, // End at normal position
+                ).animate(
+                  CurvedAnimation(
+                    parent: animation,
+                    curve: Curves.easeOut, // Smooth, natural movement
+                  ),
+                );
 
             // Fade animation for smooth appearance
             final fadeAnimation = Tween<double>(
@@ -43,11 +49,8 @@ class _LoadingPageState extends State<LoadingPage> {
 
             // Combine fade + slide
             return FadeTransition(
-              opacity: fadeAnimation,
-              child: SlideTransition(
-                position: slideAnimation,
-                child: child,
-              ),
+              opacity: fadeAnimation, 
+              child: SlideTransition(position: slideAnimation, child: child),
             );
           },
         ),
@@ -83,7 +86,6 @@ class _LoadingPageState extends State<LoadingPage> {
             );
           },
 
-         
           child: Text(
             'RFLCT',
             style: GoogleFonts.nunito(

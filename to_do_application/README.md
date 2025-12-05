@@ -1,16 +1,86 @@
-# to_do_application
+# 📝 To-Do Application (Flutter)
 
-A new Flutter project.
+## Overview
 
-## Getting Started
+This is a simple and clean **To-Do List application** built using Flutter.  
+It demonstrates basic UI structure, component reuse, and task presentation using custom widgets.
 
-This project is a starting point for a Flutter application.
+The app is **incomplete** but currently includes:
 
-A few resources to get you started if this is your first Flutter project:
+- A Home Page displaying tasks
+- Reusable `TodoTile` component
+- Checkbox UI for marking tasks (logic coming soon)
+- Bright yellow theme for a cheerful task-tracking experience
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## ✨ Features (Current)
+
+### ✔️ Home Page UI
+- Yellow background (`Colors.yellow[200]`)
+- `AppBar` with title **"To Do List"**
+- List of tasks displayed using `ListView`
+- Each task uses a custom `TodoTile` widget
+
+### ✔️ TodoTile Component
+The reusable widget that displays:
+
+- A **checkbox**
+- The **task name**
+- A rounded container with padding for spacing
+
+### ✔️ Basic Structure for Future State Management
+- `onChanged` callback already included
+- Ready for state updates (setState, provider, BLoC, Riverpod, etc.)
+
+---
+
+ 
+
+### **Home Page**
+
+ ![alt text](image.png)
+
+
+### **Home Page**
+to_do_application/
+  lib/
+    main.dart
+    pages/
+      home_page.dart
+    util/
+      todo_tile.dart
+
+
+## **🚧 Planned Features (Future)**
+
+- Add new tasks using FloatingActionButton
+
+- Delete tasks (swipe to dismiss)
+
+- Edit task names
+
+- Save tasks persistently using:
+
+- Hive
+
+- SharedPreferences
+
+- SQLite
+
+- Mark tasks as complete and store state
+
+- App themes (light/dark)
+
+- Polished UI animations
+
+
+### ***How to run*
+```bash
+git clone <repo-url>
+
+cd to_do_application
+
+flutter pub get
+
+flutter run

@@ -21,7 +21,14 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         children: [
          TodoTile(
-          taskName: "Make Tutorial",
+          taskName: "Get Feedback from Bardt",
+          taskCompleted: false,
+          onChanged: (p0){
+
+          }, 
+         ),
+          TodoTile(
+          taskName: "Create app for RFLCT",
           taskCompleted: false,
           onChanged: (p0){
 

@@ -11,6 +11,7 @@ Currently, the app includes:
 - **Onboarding Page** with 3 pages:
   - *Welcome to RFLCT* — introduces the app.
 ![alt text](../rflct/assets/images/image2.png)
+
   - *Capture Your Thoughts* — explains recording, tracking, and organising reflections.
 ![alt text](../rflct/assets/images/image3.png)
   - *Grow with Intention* — encourages small daily changes over time.
@@ -39,7 +40,7 @@ rflct/lib/main.dart # Entry point of the app /pages/loading_page.dart, onboardin
 ## Key Features Implemented
 
 - **TweenAnimationBuilder**: For logo fade + scale effect
-- **Timer**: Controls the 3–4 second wait before transitioning
+- **Timer**: Controls the 3–4 second wait before transitioning from landing to onboarding pages
 - **PageRouteBuilder**: Custom slide-up + fade transition
 - **Google Fonts**: Nunito font used throughout
 

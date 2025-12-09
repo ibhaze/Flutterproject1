@@ -57,13 +57,19 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   //  onboarding pages layout
-  Widget _buildPage({required String title, required String description}) {
+  Widget _buildPage({
+    required String image,
+    required String title,
+    required String description,
+  }) {
     return Padding(
       padding: const EdgeInsets.all(24.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Image.asset(image, height: 250, fit: BoxFit.contain),
+          const SizedBox(height: 16),
           Text(
             title,
             style: GoogleFonts.nunitoSans(
@@ -111,16 +117,19 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     },
                     children: [
                       _buildPage(
+                        image: 'assets/images/mirror.png',
                         title: 'Welcome to RFLCT',
                         description:
                             'A calm space to slow down, process your day, and reflect.',
                       ),
                       _buildPage(
+                        image: 'assets/images/journal.png',
                         title: 'Capture Your Thoughts',
                         description:
                             'Record, track, and organise your reflections in one place.',
                       ),
                       _buildPage(
+                        image: 'assets/images/grow.png',
                         title: 'Grow with Intention',
                         description:
                             'Turn your reflections into small daily changes over time.',
@@ -138,7 +147,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // SKIP text button  
+                      // SKIP text button
                       GestureDetector(
                         onTap: () {
                           // Jump to last page
@@ -151,7 +160,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         child: const Text(
                           "Skip >",
                           style: TextStyle(
-                             
                             fontSize: 16,
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
@@ -171,10 +179,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
-                        child: Text(
-                          _currentPage == 2 ? 'Get started' : 'Next',
-                        
-                        ),
+                        child: Text(_currentPage == 2 ? 'Get started' : 'Next'),
                       ),
                     ],
                   ),

@@ -49,7 +49,7 @@ class _LoadingPageState extends State<LoadingPage> {
 
             // Combine fade + slide
             return FadeTransition(
-              opacity: fadeAnimation, 
+              opacity: fadeAnimation,
               child: SlideTransition(position: slideAnimation, child: child),
             );
           },
@@ -85,14 +85,22 @@ class _LoadingPageState extends State<LoadingPage> {
               ),
             );
           },
-
-          child: Text(
-            'RFLCT',
-            style: GoogleFonts.nunito(
-              fontSize: 70,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/rflct.png',
+                width: 150,
+                ),
+              Text(
+                'RFLCT',
+                style: GoogleFonts.nunito(
+                  fontSize: 70,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
         ),
       ),

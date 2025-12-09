@@ -108,33 +108,51 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
                 // Pages
                 Expanded(
-                  child: PageView(
-                    controller: _pageController,
-                    onPageChanged: (index) {
-                      setState(() {
-                        _currentPage = index;
-                      });
-                    },
-                    children: [
-                      _buildPage(
-                        image: 'assets/images/mirror.png',
-                        title: 'Welcome to RFLCT',
-                        description:
-                            'A calm space to slow down, process your day, and reflect.',
-                      ),
-                      _buildPage(
-                        image: 'assets/images/journal.png',
-                        title: 'Capture Your Thoughts',
-                        description:
-                            'Record, track, and organise your reflections in one place.',
-                      ),
-                      _buildPage(
-                        image: 'assets/images/grow.png',
-                        title: 'Grow with Intention',
-                        description:
-                            'Turn your reflections into small daily changes over time.',
-                      ),
-                    ],
+                  child: GestureDetector(
+                     behavior: HitTestBehavior.opaque, // ensures tap works even on empty space
+    onTapDown: (details) {
+      final width = MediaQuery.of(context).size.width;
+      final dx = details.globalPosition.dx;
+
+      if (dx < width * 0.4) {
+        // LEFT SIDE TAP → previous page
+        if (_currentPage > 0) {
+          _pageController.animateToPage(
+            _currentPage - 1,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeOut,
+          );
+        }
+      } else {
+        // RIGHT SIDE TAP → next page
+        _goToNextPageOrHome();
+      }
+    },
+    child: PageView(
+      controller: _pageController,
+      onPageChanged: (index) {
+        setState(() {
+          _currentPage = index;
+        });
+      },
+      children: [
+        _buildPage(
+          image: 'assets/images/mirror.png',
+          title: 'Welcome to RFLCT',
+          description: 'A calm space to slow down, process your day, and reflect.',
+        ),
+        _buildPage(
+          image: 'assets/images/journal.png',
+          title: 'Capture Your Thoughts',
+          description: 'Record, track, and organise your reflections in one place.',
+        ),
+        _buildPage(
+          image: 'assets/images/grow.png',
+          title: 'Grow with Intention',
+          description: 'Turn your reflections into small daily changes over time.',
+        ),
+      ],
+    ),
                   ),
                 ),
 

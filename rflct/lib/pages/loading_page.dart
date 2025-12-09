@@ -18,7 +18,7 @@ class _LoadingPageState extends State<LoadingPage> {
     super.initState();
 
     // Wait 3 seconds → then navigate to HomePage with a slide-up transition
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 4), () {
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 900),

@@ -3,41 +3,60 @@ import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-  
+
   VoidCallback? get onPressed => null;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Home", style: GoogleFonts.nunito()),
+
+  drawer: Drawer(
+    child: Center(child: Text("Your menu here")),
+  ),appBar: AppBar(
+  automaticallyImplyLeading: false,
+  title: RichText(
+    text: TextSpan(
+      style: GoogleFonts.nunitoSans(
+        fontSize: 22,
+        color: Colors.black, // default color for RF
+        fontWeight: FontWeight.w600,
       ),
+      children: [
+        TextSpan(text: "RF"),
+        TextSpan(
+          text: "LCT",
+          style: TextStyle(
+            color: const Color(0xFF663366),
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    ),
+  ),
+  ),
+
+
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(
-            child: Text(
-              "Welcome to RFLCT",
-              style: GoogleFonts.nunito(fontSize: 24),
+            child: Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                color: const Color(0xFF663366),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.add,
+                 color: Colors.white,
+                 size: 35),
             ),
-          
-          ),ElevatedButton(
-            onPressed: onPressed, child: Icon(
-            Icons.record_voice_over
-            )
-            )
+            
+          ),SizedBox(height: 30,)
         ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor:   const Color(0xFF663366),
-          selectedItemColor: Color.fromARGB(255, 158, 108, 158),    
-  unselectedItemColor: Colors.white,
-          items: const [
-       
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-        ],
-      ),
+      ), 
     );
   }
 }

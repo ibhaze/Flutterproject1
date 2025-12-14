@@ -15,8 +15,8 @@ setState() updates the UI whenever:
 UI is rebuilt automatically using Flutter’s reactive architecture.
 
 
+<video controls src="counter app.mp4" title="Title">Demo</video>
 
-![alt text](image-1.png)
 
 ## 🧠 Basic logic example:
 int count = 0;

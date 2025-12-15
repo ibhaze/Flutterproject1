@@ -21,7 +21,7 @@ rflct/lib/main.dart # Entry point of the app /pages/loading_page.dart, onboardin
 ## Key Features Implemented
 
 - **TweenAnimationBuilder**: For logo fade + scale effect
-- **Timer**: Controls the 3–4 second wait before transitioning from landing to onboarding pages
+- **Timer**: Controls the 3–4 second wait before transitioning from landing to onboarding pages ,
 - **PageRouteBuilder**: Custom slide-up + fade transition
 - **Google Fonts**: Nunito font used throughout
 
